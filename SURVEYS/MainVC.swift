@@ -145,4 +145,3 @@ extension MainVC: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
         return #imageLiteral(resourceName: "NoData")
     }
 }
-

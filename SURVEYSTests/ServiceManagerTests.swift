@@ -48,7 +48,7 @@ class ServiceManagerTests: XCTestCase {
     
     func testQuery() {
         let exp = expectation(description: #function)
-
+        
         sut.query(arg: nil) { (response) in
             switch response {
             case .result:

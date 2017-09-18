@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (4.5.0)
+  - DZNEmptyDataSet (1.8.1)
+  - KeychainAccess (3.0.2)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - DZNEmptyDataSet
+  - KeychainAccess
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: 22bc0d429aa2e6c5b07edcbd6eae95b50d878a88
+
+COCOAPODS: 1.3.1
