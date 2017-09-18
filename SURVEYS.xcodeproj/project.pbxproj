@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0140CA621F6F9D79007540A7 /* DeviceVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA611F6F9D79007540A7 /* DeviceVariable.swift */; };
 		01D67F851F6F585700A1A055 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67F841F6F585700A1A055 /* AppDelegate.swift */; };
 		01D67F8A1F6F585700A1A055 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D67F881F6F585700A1A055 /* Main.storyboard */; };
 		01D67F8C1F6F585700A1A055 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D67F8B1F6F585700A1A055 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 		01D67FBF1F6F7D3200A1A055 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FBE1F6F7D3200A1A055 /* CardCell.swift */; };
 		01D67FC11F6F7D3E00A1A055 /* PagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FC01F6F7D3E00A1A055 /* PagerCell.swift */; };
 		01D67FC51F6F8CAB00A1A055 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FC41F6F8CAB00A1A055 /* RoundedButton.swift */; };
+		01D67FC81F6F9BEF00A1A055 /* CardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FC71F6F9BEF00A1A055 /* CardLayout.swift */; };
 		0B99E290E422D136D3003989 /* Pods_SURVEYS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84867320AD667CB2CE6D4AFE /* Pods_SURVEYS.framework */; };
 		3427706F7BAA509E8C9ACCDB /* Pods_SURVEYSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995362B28ACC30162E929A8A /* Pods_SURVEYSUITests.framework */; };
 		67E53B18649287E81BB92328 /* Pods_SURVEYSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF4E7A133845EB10B85B6C3 /* Pods_SURVEYSTests.framework */; };
@@ -41,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0140CA611F6F9D79007540A7 /* DeviceVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceVariable.swift; sourceTree = "<group>"; };
 		01D67F811F6F585700A1A055 /* SURVEYS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SURVEYS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D67F841F6F585700A1A055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SURVEYS/AppDelegate.swift; sourceTree = "<group>"; };
 		01D67F891F6F585700A1A055 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		01D67FBE1F6F7D3200A1A055 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		01D67FC01F6F7D3E00A1A055 /* PagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerCell.swift; sourceTree = "<group>"; };
 		01D67FC41F6F8CAB00A1A055 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		01D67FC71F6F9BEF00A1A055 /* CardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayout.swift; sourceTree = "<group>"; };
 		0B89A6600C196E8ED8B6E3B3 /* Pods-SURVEYS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SURVEYS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SURVEYS/Pods-SURVEYS.debug.xcconfig"; sourceTree = "<group>"; };
 		206B09C2118830E469AB39AC /* Pods-SURVEYSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SURVEYSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SURVEYSUITests/Pods-SURVEYSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D73E53CBB2BBD8F8660EBF8 /* Pods-SURVEYSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SURVEYSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SURVEYSTests/Pods-SURVEYSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0140CA631F6F9D7F007540A7 /* Variables */ = {
+			isa = PBXGroup;
+			children = (
+				0140CA611F6F9D79007540A7 /* DeviceVariable.swift */,
+			);
+			name = Variables;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		01D67F781F6F585700A1A055 = {
 			isa = PBXGroup;
 			children = (
@@ -126,10 +139,10 @@
 				01D67FB91F6F710B00A1A055 /* Model */,
 				01D67FB81F6F710400A1A055 /* View */,
 				01D67FB51F6F70BD00A1A055 /* Controller */,
-				01D67FBA1F6F712500A1A055 /* Utils */,
 				01D67FB61F6F70D600A1A055 /* Storyboard */,
 				01D67FB71F6F70E500A1A055 /* Resources */,
 				01D67FBB1F6F7BF100A1A055 /* Constants */,
+				0140CA631F6F9D7F007540A7 /* Variables */,
 			);
 			path = SURVEYS;
 			sourceTree = "<group>";
@@ -163,6 +176,7 @@
 		01D67FB61F6F70D600A1A055 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				01D67FBA1F6F712500A1A055 /* Utils */,
 				01D67F881F6F585700A1A055 /* Main.storyboard */,
 				01D67F8D1F6F585700A1A055 /* LaunchScreen.storyboard */,
 			);
@@ -181,6 +195,7 @@
 		01D67FB81F6F710400A1A055 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01D67FC61F6F9B7F00A1A055 /* Layout */,
 				01D67FC41F6F8CAB00A1A055 /* RoundedButton.swift */,
 				01D67FBE1F6F7D3200A1A055 /* CardCell.swift */,
 				01D67FC01F6F7D3E00A1A055 /* PagerCell.swift */,
@@ -208,6 +223,14 @@
 				01D67FBC1F6F7C3000A1A055 /* Constants.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		01D67FC61F6F9B7F00A1A055 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				01D67FC71F6F9BEF00A1A055 /* CardLayout.swift */,
+			);
+			name = Layout;
 			sourceTree = "<group>";
 		};
 		12389642A72428EDACC53D93 /* Frameworks */ = {
@@ -547,9 +570,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D67F851F6F585700A1A055 /* AppDelegate.swift in Sources */,
+				01D67FC81F6F9BEF00A1A055 /* CardLayout.swift in Sources */,
 				01D67FC51F6F8CAB00A1A055 /* RoundedButton.swift in Sources */,
 				01D67FC11F6F7D3E00A1A055 /* PagerCell.swift in Sources */,
 				01D67FB41F6F6F0600A1A055 /* MainVC.swift in Sources */,
+				0140CA621F6F9D79007540A7 /* DeviceVariable.swift in Sources */,
 				01D67FBD1F6F7C3000A1A055 /* Constants.swift in Sources */,
 				01D67FBF1F6F7D3200A1A055 /* CardCell.swift in Sources */,
 			);
