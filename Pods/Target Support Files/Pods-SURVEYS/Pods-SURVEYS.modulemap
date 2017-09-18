@@ -1,0 +1,6 @@
+framework module Pods_SURVEYS {
+  umbrella header "Pods-SURVEYS-umbrella.h"
+
+  export *
+  module * { export * }
+}
