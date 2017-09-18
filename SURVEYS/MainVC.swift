@@ -17,6 +17,8 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.tintColor = .white
+        
         if #available(iOS 10.0, *) {
             cardCollectionView.isPrefetchingEnabled = false
         }
@@ -32,6 +34,9 @@ class MainVC: UIViewController {
         pagerCollectionView.dataSource = self
         pagerCollectionView.delegate = self
         pagerCollectionView.decelerationRate = UIScrollViewDecelerationRateFast
+    }
+    
+    @IBAction func refreshTapped(_ sender: UIBarButtonItem) {
     }
 }
 
