@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class MainVC: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
@@ -38,6 +39,8 @@ class MainVC: UIViewController {
         
         cardCollectionView.dataSource = self
         cardCollectionView.delegate = self
+        cardCollectionView.emptyDataSetSource = self
+        cardCollectionView.emptyDataSetDelegate = self
         if let layout = cardCollectionView.collectionViewLayout as? CardLayout {
             layout.collectionViewCellDelegate = self
         }
@@ -86,7 +89,7 @@ extension MainVC: UICollectionViewDataSource {
 
 extension MainVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // MARK: I use collectionView and cell with fixed width and height for pager. The collectionView is 30*420 and cell is 30*30, which means the collectionView can have 14 cells within it at most. When the user's scrolling the cardCollectionView and the indicator cell hits the upper or lower boundary, content offset needs to be changed. After reseting the offset, the sums needs to be reset to max value(maxCellsQty) as well because it is still on the boundary. In addition, the dots also provide navigation functionality. Press the dot  the content view will navigate to the index accordingly.
+        // MARK: I use collectionView and cell with fixed width and height for pager. The collectionView is 30*450 and cell is 30*30, which means the collectionView can have 14 cells within it at most. When the user's scrolling the cardCollectionView and the indicator cell hits the upper or lower boundary, content offset needs to be changed. After reseting the offset, the sums needs to be reset to max value(maxCellsQty) as well because it is still on the boundary. In addition, the dots also provide navigation functionality. Press the dot  the content view will navigate to the index accordingly.
         if collectionView === pagerCollectionView {
             if indexPath.row > currentIndicatorIndex {
                 downwardCellSum += indexPath.row - currentIndicatorIndex
@@ -130,3 +133,16 @@ extension MainVC: CollectionViewCellDelegate {
         collectionView(pagerCollectionView, didSelectItemAt: IndexPath(row: Int(index), section: 0))
     }
 }
+
+extension MainVC: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "No Data"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return #imageLiteral(resourceName: "NoData")
+    }
+}
+
