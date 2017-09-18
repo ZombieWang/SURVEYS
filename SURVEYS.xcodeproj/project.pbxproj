@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0140CA621F6F9D79007540A7 /* DeviceVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA611F6F9D79007540A7 /* DeviceVariable.swift */; };
+		0140CA651F6FD2A6007540A7 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA641F6FD2A6007540A7 /* ApiManager.swift */; };
+		0140CA681F6FD513007540A7 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA671F6FD513007540A7 /* ServiceManager.swift */; };
+		0140CA6A1F6FD701007540A7 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */; };
+		0140CA6E1F6FDF43007540A7 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA6D1F6FDF43007540A7 /* Response.swift */; };
 		01D67F851F6F585700A1A055 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67F841F6F585700A1A055 /* AppDelegate.swift */; };
 		01D67F8A1F6F585700A1A055 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D67F881F6F585700A1A055 /* Main.storyboard */; };
 		01D67F8C1F6F585700A1A055 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D67F8B1F6F585700A1A055 /* Assets.xcassets */; };
 		01D67F8F1F6F585700A1A055 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D67F8D1F6F585700A1A055 /* LaunchScreen.storyboard */; };
-		01D67F9A1F6F585700A1A055 /* SURVEYSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67F991F6F585700A1A055 /* SURVEYSTests.swift */; };
 		01D67FA51F6F585700A1A055 /* SURVEYSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FA41F6F585700A1A055 /* SURVEYSUITests.swift */; };
 		01D67FB41F6F6F0600A1A055 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FB31F6F6F0600A1A055 /* MainVC.swift */; };
 		01D67FBD1F6F7C3000A1A055 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FBC1F6F7C3000A1A055 /* Constants.swift */; };
@@ -44,14 +47,17 @@
 
 /* Begin PBXFileReference section */
 		0140CA611F6F9D79007540A7 /* DeviceVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceVariable.swift; sourceTree = "<group>"; };
+		0140CA641F6FD2A6007540A7 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		0140CA671F6FD513007540A7 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
+		0140CA6D1F6FDF43007540A7 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		01D67F811F6F585700A1A055 /* SURVEYS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SURVEYS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		01D67F841F6F585700A1A055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SURVEYS/AppDelegate.swift; sourceTree = "<group>"; };
+		01D67F841F6F585700A1A055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01D67F891F6F585700A1A055 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01D67F8B1F6F585700A1A055 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01D67F8E1F6F585700A1A055 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01D67F901F6F585700A1A055 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D67F951F6F585700A1A055 /* SURVEYSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SURVEYSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		01D67F991F6F585700A1A055 /* SURVEYSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURVEYSTests.swift; sourceTree = "<group>"; };
 		01D67F9B1F6F585700A1A055 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D67FA01F6F585700A1A055 /* SURVEYSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SURVEYSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D67FA41F6F585700A1A055 /* SURVEYSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURVEYSUITests.swift; sourceTree = "<group>"; };
@@ -110,11 +116,34 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		0140CA661F6FD2B1007540A7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0140CA641F6FD2A6007540A7 /* ApiManager.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		0140CA6B1F6FD70C007540A7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		0140CA6F1F6FDF51007540A7 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				0140CA6D1F6FDF43007540A7 /* Response.swift */,
+			);
+			name = Enum;
+			sourceTree = "<group>";
+		};
 		01D67F781F6F585700A1A055 = {
 			isa = PBXGroup;
 			children = (
 				01D67F831F6F585700A1A055 /* SURVEYS */,
-				01D67F841F6F585700A1A055 /* AppDelegate.swift */,
 				01D67F981F6F585700A1A055 /* SURVEYSTests */,
 				01D67FA31F6F585700A1A055 /* SURVEYSUITests */,
 				01D67F821F6F585700A1A055 /* Products */,
@@ -136,13 +165,17 @@
 		01D67F831F6F585700A1A055 /* SURVEYS */ = {
 			isa = PBXGroup;
 			children = (
+				01D67F841F6F585700A1A055 /* AppDelegate.swift */,
 				01D67FB91F6F710B00A1A055 /* Model */,
 				01D67FB81F6F710400A1A055 /* View */,
 				01D67FB51F6F70BD00A1A055 /* Controller */,
 				01D67FB61F6F70D600A1A055 /* Storyboard */,
+				01D67FBA1F6F712500A1A055 /* Utils */,
 				01D67FB71F6F70E500A1A055 /* Resources */,
 				01D67FBB1F6F7BF100A1A055 /* Constants */,
 				0140CA631F6F9D7F007540A7 /* Variables */,
+				0140CA661F6FD2B1007540A7 /* Protocol */,
+				0140CA6F1F6FDF51007540A7 /* Enum */,
 			);
 			path = SURVEYS;
 			sourceTree = "<group>";
@@ -150,8 +183,8 @@
 		01D67F981F6F585700A1A055 /* SURVEYSTests */ = {
 			isa = PBXGroup;
 			children = (
-				01D67F991F6F585700A1A055 /* SURVEYSTests.swift */,
 				01D67F9B1F6F585700A1A055 /* Info.plist */,
+				0140CA6B1F6FD70C007540A7 /* Utils */,
 			);
 			path = SURVEYSTests;
 			sourceTree = "<group>";
@@ -176,7 +209,6 @@
 		01D67FB61F6F70D600A1A055 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				01D67FBA1F6F712500A1A055 /* Utils */,
 				01D67F881F6F585700A1A055 /* Main.storyboard */,
 				01D67F8D1F6F585700A1A055 /* LaunchScreen.storyboard */,
 			);
@@ -213,6 +245,7 @@
 		01D67FBA1F6F712500A1A055 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0140CA671F6FD513007540A7 /* ServiceManager.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -340,6 +373,7 @@
 					01D67F941F6F585700A1A055 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = ENT2ZH45DM;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 01D67F801F6F585700A1A055;
 					};
@@ -451,11 +485,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SURVEYS/Pods-SURVEYS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,13 +606,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D67F851F6F585700A1A055 /* AppDelegate.swift in Sources */,
+				0140CA651F6FD2A6007540A7 /* ApiManager.swift in Sources */,
 				01D67FC81F6F9BEF00A1A055 /* CardLayout.swift in Sources */,
 				01D67FC51F6F8CAB00A1A055 /* RoundedButton.swift in Sources */,
 				01D67FC11F6F7D3E00A1A055 /* PagerCell.swift in Sources */,
 				01D67FB41F6F6F0600A1A055 /* MainVC.swift in Sources */,
 				0140CA621F6F9D79007540A7 /* DeviceVariable.swift in Sources */,
+				0140CA6E1F6FDF43007540A7 /* Response.swift in Sources */,
 				01D67FBD1F6F7C3000A1A055 /* Constants.swift in Sources */,
 				01D67FBF1F6F7D3200A1A055 /* CardCell.swift in Sources */,
+				0140CA681F6FD513007540A7 /* ServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01D67F9A1F6F585700A1A055 /* SURVEYSTests.swift in Sources */,
+				0140CA6A1F6FD701007540A7 /* ServiceManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,11 +801,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ENT2ZH45DM;
 				INFOPLIST_FILE = SURVEYSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZombieWang.SURVEYSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SURVEYS.app/SURVEYS";
 			};
@@ -778,6 +819,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ENT2ZH45DM;
 				INFOPLIST_FILE = SURVEYSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
