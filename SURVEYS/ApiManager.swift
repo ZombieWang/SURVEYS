@@ -10,10 +10,10 @@ import Foundation
 import SwiftyJSON
 
 protocol ApiManager {
-    var token: String { get }
+    var token: String? { get }
     var urls: [String: String] { get }
     var tokenParams: [String: String] { get }
     
-    func query(arg: [String: String]?, completion: @escaping (Response<JSON>) -> Void)
     func getToken(completion: @escaping (Response<String>) -> Void)
+    func query(arg: [String: String]?, completion: @escaping (Response<JSON>) -> Void)
 }
