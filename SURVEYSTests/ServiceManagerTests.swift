@@ -30,9 +30,25 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertNotNil(sut.tokenParams)
     }
     
-    func testQuery() {
+    func testGetToken() {
         let exp = expectation(description: #function)
         
+        sut.getToken { (response) in
+            switch response {
+            case .result(let token):
+                XCTAssertNotNil(token)
+                exp.fulfill()
+            case .failed:
+                XCTFail("fetch new token failed")
+            }
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testQuery() {
+        let exp = expectation(description: #function)
+
         sut.query(arg: nil) { (response) in
             switch response {
             case .result:
@@ -48,22 +64,6 @@ class ServiceManagerTests: XCTestCase {
                 exp.fulfill()
             case .failed:
                 XCTFail("fetch with parameters failed")
-            }
-        }
-        
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
-    func testGetToken() {
-        let exp = expectation(description: #function)
-        
-        sut.getToken { (response) in
-            switch response {
-            case .result(let token):
-                XCTAssertNotNil(token)
-                exp.fulfill()
-            case .failed:
-                XCTFail("fetch new token failed")
             }
         }
         
