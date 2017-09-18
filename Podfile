@@ -8,6 +8,7 @@ target 'SURVEYS' do
   # Pods for SURVEYS
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON'
+  pod 'DZNEmptyDataSet'
   pod 'KeychainAccess'
   
   target 'SURVEYSTests' do
