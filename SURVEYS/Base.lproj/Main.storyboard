@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -179,11 +180,57 @@
                     <connections>
                         <outlet property="cardCollectionView" destination="Pnw-d7-Pit" id="u6o-Pk-n3I"/>
                         <outlet property="pagerCollectionView" destination="ril-da-sih" id="Tpz-QV-IE9"/>
+                        <segue destination="e8o-mL-zoF" kind="show" identifier="ToDetailVC" id="VHT-7X-fkg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuG-gO-3YR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1008.8" y="106.59670164917542"/>
+        </scene>
+        <!--DetailVC-->
+        <scene sceneID="SL6-uS-zkR">
+            <objects>
+                <viewController id="e8o-mL-zoF" customClass="DetailVC" customModule="SURVEYS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iYV-Mo-Nxa"/>
+                        <viewControllerLayoutGuide type="bottom" id="inK-sd-h2u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zxI-Sn-i3L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marriott Bangkok Sukhumvit Hotel" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75S-JQ-yiM">
+                                <rect key="frame" x="16" y="204" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Octave" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5hy-OQ-cyN">
+                                <rect key="frame" x="46" y="144" width="283" height="55"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="5hy-OQ-cyN" secondAttribute="trailing" constant="30" id="5aM-6v-yug"/>
+                            <constraint firstItem="75S-JQ-yiM" firstAttribute="top" secondItem="5hy-OQ-cyN" secondAttribute="bottom" constant="5" id="Cdq-hj-zzB"/>
+                            <constraint firstItem="75S-JQ-yiM" firstAttribute="top" secondItem="5hy-OQ-cyN" secondAttribute="bottom" constant="5" id="GEa-Xy-xbc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="75S-JQ-yiM" secondAttribute="trailing" id="Kil-8m-iVo"/>
+                            <constraint firstItem="5hy-OQ-cyN" firstAttribute="top" secondItem="iYV-Mo-Nxa" secondAttribute="bottom" constant="80" id="bMP-Nt-X3H"/>
+                            <constraint firstItem="5hy-OQ-cyN" firstAttribute="leading" secondItem="zxI-Sn-i3L" secondAttribute="leadingMargin" constant="30" id="l7v-ho-mMN"/>
+                            <constraint firstItem="75S-JQ-yiM" firstAttribute="leading" secondItem="zxI-Sn-i3L" secondAttribute="leadingMargin" id="zg6-0P-zSR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLbl" destination="75S-JQ-yiM" id="46o-9f-Orj"/>
+                        <outlet property="titleLbl" destination="5hy-OQ-cyN" id="dmv-rX-0hX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbV-Mi-7cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1917.5999999999999" y="106.59670164917542"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XcS-ff-YxU">

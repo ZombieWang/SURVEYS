@@ -11,3 +11,4 @@ import Foundation
 // MARK: let the IDE help for preventing typo
 let DequeueCardCell = "CardCell"
 let DequeuePagerCell = "PagerCell"
+let ToDetailVC = "ToDetailVC"
