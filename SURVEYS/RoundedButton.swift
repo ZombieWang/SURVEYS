@@ -48,6 +48,5 @@ class RoundedButton: UIButton {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 5.0
         layer.shadowOffset = CGSize(width: _weight, height: _height)
-//        layer.cornerRadius = self.bounds.size.height / 2.0
     }
 }
