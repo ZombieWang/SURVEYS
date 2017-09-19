@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.5.0)
   - DZNEmptyDataSet (1.8.1)
   - KeychainAccess (3.0.2)
+  - Nuke (5.1.1)
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.5)
   - DZNEmptyDataSet
   - KeychainAccess
+  - Nuke
   - NVActivityIndicatorView
   - SwiftyJSON
 
@@ -18,9 +20,10 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  Nuke: 0a2ddb4bd13d75782964bf598a159ca2a836d826
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: fe563aad236052dd9e6168640af7e7837b838fd6
+PODFILE CHECKSUM: 7eb9b27b81a92235799559f6e5e8fed1ad2184a2
 
 COCOAPODS: 1.3.1
