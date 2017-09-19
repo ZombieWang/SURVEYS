@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014046E81F70F095004ADA30 /* SurveyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014046E71F70F095004ADA30 /* SurveyTests.swift */; };
+		014046EB1F70F0C5004ADA30 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014046EA1F70F0C5004ADA30 /* Survey.swift */; };
 		0140CA651F6FD2A6007540A7 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA641F6FD2A6007540A7 /* ApiManager.swift */; };
 		0140CA681F6FD513007540A7 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA671F6FD513007540A7 /* ServiceManager.swift */; };
 		0140CA6A1F6FD701007540A7 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014046E71F70F095004ADA30 /* SurveyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTests.swift; sourceTree = "<group>"; };
+		014046EA1F70F0C5004ADA30 /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		0140CA641F6FD2A6007540A7 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		0140CA671F6FD513007540A7 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
@@ -107,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		014046E91F70F09A004ADA30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				014046E71F70F095004ADA30 /* SurveyTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		0140CA631F6F9D7F007540A7 /* Variables */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,8 +195,9 @@
 		01D67F981F6F585700A1A055 /* SURVEYSTests */ = {
 			isa = PBXGroup;
 			children = (
-				01D67F9B1F6F585700A1A055 /* Info.plist */,
+				014046E91F70F09A004ADA30 /* Model */,
 				0140CA6B1F6FD70C007540A7 /* Utils */,
+				01D67F9B1F6F585700A1A055 /* Info.plist */,
 			);
 			path = SURVEYSTests;
 			sourceTree = "<group>";
@@ -238,6 +251,7 @@
 		01D67FB91F6F710B00A1A055 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				014046EA1F70F0C5004ADA30 /* Survey.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -616,6 +630,7 @@
 				01D67FB41F6F6F0600A1A055 /* MainVC.swift in Sources */,
 				0140CA6E1F6FDF43007540A7 /* Response.swift in Sources */,
 				01D67FBD1F6F7C3000A1A055 /* Constants.swift in Sources */,
+				014046EB1F70F0C5004ADA30 /* Survey.swift in Sources */,
 				01D67FBF1F6F7D3200A1A055 /* CardCell.swift in Sources */,
 				0140CA681F6FD513007540A7 /* ServiceManager.swift in Sources */,
 			);
@@ -626,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0140CA6A1F6FD701007540A7 /* ServiceManagerTests.swift in Sources */,
+				014046E81F70F095004ADA30 /* SurveyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
