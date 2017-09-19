@@ -49,6 +49,12 @@ class MainVC: UIViewController {
         reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let sender = sender as? UIButton, let detailVC = segue.destination as? DetailVC {
+            detailVC.survey = surveys[sender.tag]
+        }
+    }
+    
     func didSelectIndicator() {
         collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
     }
@@ -92,6 +98,10 @@ class MainVC: UIViewController {
         }
     }
     
+    func didTapTakeSurveyBtn(sender: UIButton) {
+        performSegue(withIdentifier: ToDetailVC, sender: sender)
+    }
+    
     // MARK: Save image into cache
     private func fetchImage(id: String, url: URL) {
         if imageCaches[id] == nil {
@@ -133,6 +143,8 @@ extension MainVC: UICollectionViewDataSource {
             if let data = imageCaches[surveys[indexPath.row].id] {
                 cell.imageView.image = UIImage(data: data)
             }
+            
+            cell.takeSurveyBtn.addTarget(self, action: #selector(didTapTakeSurveyBtn(sender:)), for: .touchUpInside)
             
             return cell
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeuePagerCell, for: indexPath) as? PagerCell {
