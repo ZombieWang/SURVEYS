@@ -54,6 +54,21 @@ final class ServiceManager: ApiManager {
         }
     }
     
+    func refreshToken(inEveryTimeInterval interval: TimeInterval) {
+        let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
+            self.getToken(completion: { (response) in
+                switch response {
+                case .failed:
+                    print("Failed")
+                case .result(let token):
+                    print("Token: \(token) saved to keychain.")
+                }
+            })
+
+        }
+        timer.fire()
+    }
+    
     func query(arg: [String: String]?, completion: @escaping (Response<JSON>) -> Void) {
         if let token = try? Keychain(server: URL(string: self.urls["query"]!)!, protocolType: .https).get("token") {
             _token = token

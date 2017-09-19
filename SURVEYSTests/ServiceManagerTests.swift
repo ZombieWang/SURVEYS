@@ -46,6 +46,11 @@ class ServiceManagerTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
+    // MARK: Same functionality as getToken(completion:), so just check the existance and lock it in the test file.
+    func testRefreshToken() {
+        XCTAssertNotNil(sut.refreshToken)
+    }
+    
     func testQuery() {
         let exp = expectation(description: #function)
         
