@@ -9,13 +9,13 @@
 import UIKit
 import DZNEmptyDataSet
 import NVActivityIndicatorView
+import Nuke
 
 class MainVC: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var pagerCollectionView: UICollectionView!
     
     var surveys = [Survey]()
-    var imageCaches = [String: Data]()
     var currentIndicatorIndex = 0 {
         didSet {
             collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
@@ -75,8 +75,6 @@ class MainVC: UIViewController {
                         
                         if self.surveys.filter({ $0.id == id }).count == 0 {
                             self.surveys.append(survey)
-                            
-                            self.fetchImage(id: id, url: URL(string: coverImageUrl)!)
                         }
                     }
                 })
@@ -102,24 +100,6 @@ class MainVC: UIViewController {
         performSegue(withIdentifier: ToDetailVC, sender: sender)
     }
     
-    // MARK: Save image into cache
-    private func fetchImage(id: String, url: URL) {
-        if imageCaches[id] == nil {
-            ImageFetchManager.fetch(url: url) { (response) in
-                switch response {
-                case .result(let data):
-                    self.imageCaches[id] = data
-                    
-                    DispatchQueue.main.async {
-                        self.cardCollectionView.reloadData()
-                    }
-                case .failed:
-                    print("failed")
-                }
-            }
-        }
-    }
-    
     @IBAction func refreshTapped(_ sender: UIBarButtonItem) {
         reloadData()
     }
@@ -140,9 +120,8 @@ extension MainVC: UICollectionViewDataSource {
             cell.descriptionLbl.text = surveys[indexPath.row].description
             cell.takeSurveyBtn.tag = indexPath.row
             
-            if let data = imageCaches[surveys[indexPath.row].id] {
-                cell.imageView.image = UIImage(data: data)
-            }
+            cell.imageView.image = nil
+            Nuke.loadImage(with: surveys[indexPath.row].coverImageURL, into: cell.imageView)
             
             cell.takeSurveyBtn.addTarget(self, action: #selector(didTapTakeSurveyBtn(sender:)), for: .touchUpInside)
             
