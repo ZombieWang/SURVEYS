@@ -14,12 +14,12 @@ class MainVC: UIViewController {
     @IBOutlet weak var pagerCollectionView: UICollectionView!
     
     var surveys = [Survey]()
+    var imageCaches = [String: Data]()
     var currentIndicatorIndex = 0 {
         didSet {
             collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
         }
     }
-    
     var currentItemIndex: Int = 0
     var downwardCellSum = 0
     var upwardCellSum = 0
@@ -32,10 +32,6 @@ class MainVC: UIViewController {
         }
         
         navigationController?.navigationBar.tintColor = .white
-        
-//        for i in 1 ... 30 {
-//            surveys.append("\(i)")
-//        }
         
         cardCollectionView.dataSource = self
         cardCollectionView.delegate = self
@@ -56,16 +52,36 @@ class MainVC: UIViewController {
         collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
     }
     
+    // MARK: Save image into cache
+    private func fetchImage(id: String, url: URL) {
+        if imageCaches[id] == nil {
+            ImageFetchManager.fetch(url: url) { (response) in
+                switch response {
+                case .result(let data):
+                    self.imageCaches[id] = data
+                    
+                    DispatchQueue.main.async {
+                        self.cardCollectionView.reloadData()
+                    }
+                case .failed:
+                    print("failed")
+                }
+            }
+        }
+    }
+    
     @IBAction func refreshTapped(_ sender: UIBarButtonItem) {
         ServiceManager.shared.query(arg: nil) { (response) in
             switch response {
             case .result(let json):
                 _ = json.map({ (_, json) in
                     if let id = json["id"].string, let title = json["title"].string, let description = json["description"].string, let coverImageUrl = json["cover_image_url"].string {
-                        let survey = Survey(id: id, title: title, description: description, coverImageUrl: coverImageUrl)
+                        let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
                         
                         if self.surveys.filter({ $0.id == id }).count == 0 {
                             self.surveys.append(survey)
+                            
+                            self.fetchImage(id: id, url: URL(string: coverImageUrl)!)
                         }
                     }
                 })
@@ -98,6 +114,10 @@ extension MainVC: UICollectionViewDataSource {
             cell.titleLbl.text = surveys[indexPath.row].title
             cell.descriptionLbl.text = surveys[indexPath.row].description
             cell.takeSurveyBtn.tag = indexPath.row
+            
+            if let data = imageCaches[surveys[indexPath.row].id] {
+                cell.imageView.image = UIImage(data: data)
+            }
             
             return cell
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeuePagerCell, for: indexPath) as? PagerCell {
