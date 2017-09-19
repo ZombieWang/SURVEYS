@@ -8,18 +8,19 @@
 
 import UIKit
 import DZNEmptyDataSet
+import NVActivityIndicatorView
 
 class MainVC: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var pagerCollectionView: UICollectionView!
     
-    var items = [String]()
+    var surveys = [Survey]()
+    var imageCaches = [String: Data]()
     var currentIndicatorIndex = 0 {
         didSet {
             collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
         }
     }
-    
     var currentItemIndex: Int = 0
     var downwardCellSum = 0
     var upwardCellSum = 0
@@ -33,14 +34,8 @@ class MainVC: UIViewController {
         
         navigationController?.navigationBar.tintColor = .white
         
-        for i in 1 ... 30 {
-            items.append("\(i)")
-        }
-        
         cardCollectionView.dataSource = self
         cardCollectionView.delegate = self
-        cardCollectionView.emptyDataSetSource = self
-        cardCollectionView.emptyDataSetDelegate = self
         if let layout = cardCollectionView.collectionViewLayout as? CardLayout {
             layout.collectionViewCellDelegate = self
         }
@@ -50,13 +45,73 @@ class MainVC: UIViewController {
         
         cardCollectionView.decelerationRate = UIScrollViewDecelerationRateFast
         pagerCollectionView.decelerationRate = UIScrollViewDecelerationRateFast
+        
+        reloadData()
     }
     
     func didSelectIndicator() {
         collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
     }
     
+    func reloadData() {
+        NVActivityIndicatorView.DEFAULT_TYPE = .pacman
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
+            
+        ServiceManager.shared.query(arg: nil) { (response) in
+            self.cardCollectionView.emptyDataSetSource = self
+            self.cardCollectionView.emptyDataSetDelegate = self
+            
+            switch response {
+            case .result(let json):
+                _ = json.map({ (_, json) in
+                    if let id = json["id"].string, let title = json["title"].string, let description = json["description"].string, let coverImageUrl = json["cover_image_url"].string {
+                        let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
+                        
+                        if self.surveys.filter({ $0.id == id }).count == 0 {
+                            self.surveys.append(survey)
+                            
+                            self.fetchImage(id: id, url: URL(string: coverImageUrl)!)
+                        }
+                    }
+                })
+                
+                DispatchQueue.main.async {
+                    self.cardCollectionView.reloadData()
+                    self.pagerCollectionView.reloadData()
+                    
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                }
+            case .failed:
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                
+                let alertController = UIAlertController(title: "Error", message: "Fetch data failed", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alertController.addAction(cancel)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // MARK: Save image into cache
+    private func fetchImage(id: String, url: URL) {
+        if imageCaches[id] == nil {
+            ImageFetchManager.fetch(url: url) { (response) in
+                switch response {
+                case .result(let data):
+                    self.imageCaches[id] = data
+                    
+                    DispatchQueue.main.async {
+                        self.cardCollectionView.reloadData()
+                    }
+                case .failed:
+                    print("failed")
+                }
+            }
+        }
+    }
+    
     @IBAction func refreshTapped(_ sender: UIBarButtonItem) {
+        reloadData()
     }
 }
 
@@ -66,11 +121,18 @@ extension MainVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return surveys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === cardCollectionView, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeueCardCell, for: indexPath) as? CardCell {
+            cell.titleLbl.text = surveys[indexPath.row].title
+            cell.descriptionLbl.text = surveys[indexPath.row].description
+            cell.takeSurveyBtn.tag = indexPath.row
+            
+            if let data = imageCaches[surveys[indexPath.row].id] {
+                cell.imageView.image = UIImage(data: data)
+            }
             
             return cell
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeuePagerCell, for: indexPath) as? PagerCell {
@@ -89,7 +151,7 @@ extension MainVC: UICollectionViewDataSource {
 
 extension MainVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // MARK: I use collectionView and cell with fixed width and height for pager. The collectionView is 30*450 and cell is 30*30, which means the collectionView can have 14 cells within it at most. When the user's scrolling the cardCollectionView and the indicator cell hits the upper or lower boundary, content offset needs to be changed. After reseting the offset, the sums needs to be reset to max value(maxCellsQty) as well because it is still on the boundary. In addition, the dots also provide navigation functionality. Press the dot  the content view will navigate to the index accordingly.
+        // MARK: I use collectionView and dequeue cell with fixed width and height for pager. The collectionView is 30*450 and cell is 30*30, which means the collectionView can have 15 cells within it at most. When the user's scrolling the cardCollectionView and the indicator cell hits the upper or lower boundary, content offset needs to be changed. After reseting the offset, the sums needs to be reset to max value(maxCellsQty) as well because the cell is still on the boundary. In addition, the dots also provide navigation functionality. Press the dot the content view will navigate to the index accordingly.
         if collectionView === pagerCollectionView {
             if indexPath.row > currentIndicatorIndex {
                 downwardCellSum += indexPath.row - currentIndicatorIndex

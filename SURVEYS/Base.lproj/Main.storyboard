@@ -49,14 +49,14 @@
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marriott Bangkok Sukhumvit Hotel" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGG-2V-gRi">
-                                                    <rect key="frame" x="0.0" y="117" width="261" height="46.5"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="114.5" width="261" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Octave" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9e6-AR-xNK">
-                                                    <rect key="frame" x="0.0" y="50" width="261" height="62"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Octave" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9e6-AR-xNK">
+                                                    <rect key="frame" x="30" y="54.5" width="201" height="55"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="40"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -81,7 +81,7 @@
                                                 </button>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.96470588239999999" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="GGG-2V-gRi" firstAttribute="leading" secondItem="FLw-EH-dE2" secondAttribute="leading" id="18q-ft-Xdq"/>
                                             <constraint firstItem="3b7-KN-NYg" firstAttribute="top" secondItem="FLw-EH-dE2" secondAttribute="top" id="1WC-et-G93"/>
@@ -93,10 +93,10 @@
                                             <constraint firstAttribute="trailing" secondItem="3b7-KN-NYg" secondAttribute="trailing" id="S3S-Ba-AJz"/>
                                             <constraint firstItem="qmi-Ll-LVq" firstAttribute="centerY" secondItem="FLw-EH-dE2" secondAttribute="centerY" multiplier="1.65" id="Usm-1F-CP5"/>
                                             <constraint firstAttribute="bottom" secondItem="3b7-KN-NYg" secondAttribute="bottom" id="YQl-a2-SEp"/>
-                                            <constraint firstAttribute="trailing" secondItem="9e6-AR-xNK" secondAttribute="trailing" id="fQQ-jA-h9h"/>
+                                            <constraint firstAttribute="trailing" secondItem="9e6-AR-xNK" secondAttribute="trailing" constant="30" id="fQQ-jA-h9h"/>
                                             <constraint firstItem="qmi-Ll-LVq" firstAttribute="centerX" secondItem="FLw-EH-dE2" secondAttribute="centerX" id="ftr-OL-z3b"/>
                                             <constraint firstItem="GGG-2V-gRi" firstAttribute="top" secondItem="9e6-AR-xNK" secondAttribute="bottom" constant="5" id="n9d-wQ-D9I"/>
-                                            <constraint firstItem="9e6-AR-xNK" firstAttribute="leading" secondItem="FLw-EH-dE2" secondAttribute="leading" id="wN5-MV-Oox"/>
+                                            <constraint firstItem="9e6-AR-xNK" firstAttribute="leading" secondItem="FLw-EH-dE2" secondAttribute="leading" constant="30" id="wN5-MV-Oox"/>
                                             <constraint firstItem="8iB-EV-Pws" firstAttribute="top" secondItem="FLw-EH-dE2" secondAttribute="top" id="xIB-H1-bDu"/>
                                             <constraint firstAttribute="trailing" secondItem="8iB-EV-Pws" secondAttribute="trailing" id="ybu-a2-yWA"/>
                                         </constraints>
@@ -105,8 +105,8 @@
                                             <outlet property="descriptionLbl" destination="GGG-2V-gRi" id="Gp7-u7-ctS"/>
                                             <outlet property="imageCoverView" destination="3b7-KN-NYg" id="HTb-oy-3p8"/>
                                             <outlet property="imageView" destination="8iB-EV-Pws" id="DJr-qM-Lzx"/>
-                                            <outlet property="nameLbl" destination="9e6-AR-xNK" id="vQf-Fi-Jpn"/>
                                             <outlet property="takeSurveyBtn" destination="qmi-Ll-LVq" id="ZY0-vT-Ofw"/>
+                                            <outlet property="titleLbl" destination="9e6-AR-xNK" id="y7B-vT-ZIf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
