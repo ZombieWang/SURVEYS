@@ -13,7 +13,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var pagerCollectionView: UICollectionView!
     
-    var items = [String]()
+    var surveys = [Survey]()
     var currentIndicatorIndex = 0 {
         didSet {
             collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
@@ -33,9 +33,9 @@ class MainVC: UIViewController {
         
         navigationController?.navigationBar.tintColor = .white
         
-        for i in 1 ... 30 {
-            items.append("\(i)")
-        }
+//        for i in 1 ... 30 {
+//            surveys.append("\(i)")
+//        }
         
         cardCollectionView.dataSource = self
         cardCollectionView.delegate = self
@@ -57,6 +57,30 @@ class MainVC: UIViewController {
     }
     
     @IBAction func refreshTapped(_ sender: UIBarButtonItem) {
+        ServiceManager.shared.query(arg: nil) { (response) in
+            switch response {
+            case .result(let json):
+                _ = json.map({ (_, json) in
+                    if let id = json["id"].string, let title = json["title"].string, let description = json["description"].string, let coverImageUrl = json["cover_image_url"].string {
+                        let survey = Survey(id: id, title: title, description: description, coverImageUrl: coverImageUrl)
+                        
+                        if self.surveys.filter({ $0.id == id }).count == 0 {
+                            self.surveys.append(survey)
+                        }
+                    }
+                })
+                
+                DispatchQueue.main.async {
+                    self.cardCollectionView.reloadData()
+                    self.pagerCollectionView.reloadData()
+                }
+            case .failed:
+                let alertController = UIAlertController(title: "Error", message: "Fetch data failed", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alertController.addAction(cancel)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
 }
 
@@ -66,11 +90,14 @@ extension MainVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return surveys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === cardCollectionView, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeueCardCell, for: indexPath) as? CardCell {
+            cell.titleLbl.text = surveys[indexPath.row].title
+            cell.descriptionLbl.text = surveys[indexPath.row].description
+            cell.takeSurveyBtn.tag = indexPath.row
             
             return cell
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeuePagerCell, for: indexPath) as? PagerCell {

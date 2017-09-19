@@ -9,7 +9,7 @@
 import UIKit
 
 class CardCell: UICollectionViewCell {
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageCoverView: UIView!
@@ -29,7 +29,7 @@ class CardCell: UICollectionViewCell {
         
         let scale = max(delta, 0.5)
         
-        nameLbl.transform = CGAffineTransform(scaleX: scale, y: scale)
+        titleLbl.transform = CGAffineTransform(scaleX: scale, y: scale)
         descriptionLbl.alpha = delta
         takeSurveyBtn.transform = CGAffineTransform(scaleX: scale, y: scale)
     }
