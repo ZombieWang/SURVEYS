@@ -46,31 +46,15 @@ class MainVC: UIViewController {
         
         cardCollectionView.decelerationRate = UIScrollViewDecelerationRateFast
         pagerCollectionView.decelerationRate = UIScrollViewDecelerationRateFast
+        
+        reloadData()
     }
     
     func didSelectIndicator() {
         collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
     }
     
-    // MARK: Save image into cache
-    private func fetchImage(id: String, url: URL) {
-        if imageCaches[id] == nil {
-            ImageFetchManager.fetch(url: url) { (response) in
-                switch response {
-                case .result(let data):
-                    self.imageCaches[id] = data
-                    
-                    DispatchQueue.main.async {
-                        self.cardCollectionView.reloadData()
-                    }
-                case .failed:
-                    print("failed")
-                }
-            }
-        }
-    }
-    
-    @IBAction func refreshTapped(_ sender: UIBarButtonItem) {
+    func reloadData() {
         ServiceManager.shared.query(arg: nil) { (response) in
             switch response {
             case .result(let json):
@@ -97,6 +81,28 @@ class MainVC: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
+    }
+    
+    // MARK: Save image into cache
+    private func fetchImage(id: String, url: URL) {
+        if imageCaches[id] == nil {
+            ImageFetchManager.fetch(url: url) { (response) in
+                switch response {
+                case .result(let data):
+                    self.imageCaches[id] = data
+                    
+                    DispatchQueue.main.async {
+                        self.cardCollectionView.reloadData()
+                    }
+                case .failed:
+                    print("failed")
+                }
+            }
+        }
+    }
+    
+    @IBAction func refreshTapped(_ sender: UIBarButtonItem) {
+        reloadData()
     }
 }
 
