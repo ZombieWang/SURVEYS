@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
         DeviceVariable.windowHeight = window!.rootViewController!.view.bounds.height
+        
+        ServiceManager.shared.refreshToken(inEveryTimeInterval: 300)
+        
         return true
-    } 
+    }
 }

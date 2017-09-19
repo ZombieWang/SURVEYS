@@ -14,5 +14,6 @@ protocol ApiManager {
     var tokenParams: [String: String] { get }
     
     func getToken(completion: @escaping (Response<String>) -> Void)
+    func refreshToken(inEveryTimeInterval interval: TimeInterval)
     func query(arg: [String: String]?, completion: @escaping (Response<JSON>) -> Void)
 }
