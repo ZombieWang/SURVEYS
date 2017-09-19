@@ -8,6 +8,7 @@
 
 import UIKit
 import DZNEmptyDataSet
+import NVActivityIndicatorView
 
 class MainVC: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
@@ -35,8 +36,6 @@ class MainVC: UIViewController {
         
         cardCollectionView.dataSource = self
         cardCollectionView.delegate = self
-        cardCollectionView.emptyDataSetSource = self
-        cardCollectionView.emptyDataSetDelegate = self
         if let layout = cardCollectionView.collectionViewLayout as? CardLayout {
             layout.collectionViewCellDelegate = self
         }
@@ -55,7 +54,13 @@ class MainVC: UIViewController {
     }
     
     func reloadData() {
+        NVActivityIndicatorView.DEFAULT_TYPE = .pacman
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
+            
         ServiceManager.shared.query(arg: nil) { (response) in
+            self.cardCollectionView.emptyDataSetSource = self
+            self.cardCollectionView.emptyDataSetDelegate = self
+            
             switch response {
             case .result(let json):
                 _ = json.map({ (_, json) in
@@ -73,8 +78,12 @@ class MainVC: UIViewController {
                 DispatchQueue.main.async {
                     self.cardCollectionView.reloadData()
                     self.pagerCollectionView.reloadData()
+                    
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
                 }
             case .failed:
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                
                 let alertController = UIAlertController(title: "Error", message: "Fetch data failed", preferredStyle: .alert)
                 let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 alertController.addAction(cancel)

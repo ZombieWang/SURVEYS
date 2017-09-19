@@ -10,6 +10,7 @@ target 'SURVEYS' do
   pod 'SwiftyJSON'
   pod 'DZNEmptyDataSet'
   pod 'KeychainAccess'
+  pod 'NVActivityIndicatorView'
 
   target 'SURVEYSTests' do
     inherit! :search_paths
