@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		014046E81F70F095004ADA30 /* SurveyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014046E71F70F095004ADA30 /* SurveyTests.swift */; };
 		014046EB1F70F0C5004ADA30 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014046EA1F70F0C5004ADA30 /* Survey.swift */; };
-		014046ED1F710F21004ADA30 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014046EC1F710F21004ADA30 /* ImageFetcher.swift */; };
 		014046EF1F710F5A004ADA30 /* ImageFetchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014046EE1F710F5A004ADA30 /* ImageFetchManager.swift */; };
-		0140CA651F6FD2A6007540A7 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA641F6FD2A6007540A7 /* ApiManager.swift */; };
 		0140CA681F6FD513007540A7 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA671F6FD513007540A7 /* ServiceManager.swift */; };
 		0140CA6A1F6FD701007540A7 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */; };
 		0140CA6E1F6FDF43007540A7 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA6D1F6FDF43007540A7 /* Response.swift */; };
@@ -54,9 +52,7 @@
 /* Begin PBXFileReference section */
 		014046E71F70F095004ADA30 /* SurveyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTests.swift; sourceTree = "<group>"; };
 		014046EA1F70F0C5004ADA30 /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
-		014046EC1F710F21004ADA30 /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		014046EE1F710F5A004ADA30 /* ImageFetchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetchManager.swift; sourceTree = "<group>"; };
-		0140CA641F6FD2A6007540A7 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		0140CA671F6FD513007540A7 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
 		0140CA6D1F6FDF43007540A7 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -136,15 +132,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		0140CA661F6FD2B1007540A7 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				0140CA641F6FD2A6007540A7 /* ApiManager.swift */,
-				014046EC1F710F21004ADA30 /* ImageFetcher.swift */,
-			);
-			name = Protocol;
-			sourceTree = "<group>";
-		};
 		0140CA6B1F6FD70C007540A7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +183,6 @@
 				01D67FB71F6F70E500A1A055 /* Resources */,
 				01D67FBB1F6F7BF100A1A055 /* Constants */,
 				0140CA631F6F9D7F007540A7 /* Variables */,
-				0140CA661F6FD2B1007540A7 /* Protocol */,
 				0140CA6F1F6FDF51007540A7 /* Enum */,
 			);
 			path = SURVEYS;
@@ -638,7 +624,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D67F851F6F585700A1A055 /* AppDelegate.swift in Sources */,
-				0140CA651F6FD2A6007540A7 /* ApiManager.swift in Sources */,
 				014046EF1F710F5A004ADA30 /* ImageFetchManager.swift in Sources */,
 				01D67FC81F6F9BEF00A1A055 /* CardLayout.swift in Sources */,
 				01D67FC51F6F8CAB00A1A055 /* RoundedButton.swift in Sources */,
@@ -646,7 +631,6 @@
 				01D67FC11F6F7D3E00A1A055 /* PagerCell.swift in Sources */,
 				01A0FA4E1F704E0000B3187C /* DeviceVariable.swift in Sources */,
 				01D67FB41F6F6F0600A1A055 /* MainVC.swift in Sources */,
-				014046ED1F710F21004ADA30 /* ImageFetcher.swift in Sources */,
 				0140CA6E1F6FDF43007540A7 /* Response.swift in Sources */,
 				01D67FBD1F6F7C3000A1A055 /* Constants.swift in Sources */,
 				014046EB1F70F0C5004ADA30 /* Survey.swift in Sources */,

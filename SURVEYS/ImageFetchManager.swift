@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 // MARK: Use struct to prevent protential reference cycle problem
-struct ImageFetchManager: ImageFetcher {
+struct ImageFetchManager {
     static func fetch(url: URL, completion: @escaping (Response<Data>) -> Void) {
         Alamofire.request(url).responseData { (response) in
             guard let data = response.result.value else {
