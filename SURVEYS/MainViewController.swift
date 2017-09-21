@@ -96,7 +96,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func didTapTakeSurveyBtn(sender: UIButton) {
+    func didTapTakeSurveyButton(sender: UIButton) {
         performSegue(withIdentifier: ToDetailVC, sender: sender)
     }
     
@@ -123,7 +123,7 @@ extension MainViewController: UICollectionViewDataSource {
             cell.imageView.image = nil
             Nuke.loadImage(with: surveys[indexPath.row].coverImageURL, into: cell.imageView)
             
-            cell.takeSurveyButton.addTarget(self, action: #selector(didTapTakeSurveyBtn(sender:)), for: .touchUpInside)
+            cell.takeSurveyButton.addTarget(self, action: #selector(didTapTakeSurveyButton(sender:)), for: .touchUpInside)
             
             return cell
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeuePagerCell, for: indexPath) as? PagerCell {
