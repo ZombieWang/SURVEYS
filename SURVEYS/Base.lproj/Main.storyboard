@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Khn-HY-db0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Khn-HY-db0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
+            <string>AvenirNext-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--SURVEYS-->
         <scene sceneID="gtd-vC-z3k">
             <objects>
-                <viewController id="OQp-bD-fQv" customClass="MainVC" customModule="SURVEYS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OQp-bD-fQv" customClass="MainViewController" customModule="SURVEYS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eUA-fl-SBY"/>
                         <viewControllerLayoutGuide type="bottom" id="CgO-Dh-xKY"/>
@@ -31,7 +37,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="Rkz-kv-8qd" customClass="CardLayout" customModule="SURVEYS" customModuleProvider="target"/>
                                 <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="5qY-wx-tDF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <rect key="frame" x="0.0" y="-84" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <cells>
@@ -103,11 +109,11 @@
                                         </constraints>
                                         <size key="customSize" width="261" height="271"/>
                                         <connections>
-                                            <outlet property="descriptionLbl" destination="GGG-2V-gRi" id="Gp7-u7-ctS"/>
+                                            <outlet property="descriptionLabel" destination="GGG-2V-gRi" id="Gp7-u7-ctS"/>
                                             <outlet property="imageCoverView" destination="3b7-KN-NYg" id="HTb-oy-3p8"/>
                                             <outlet property="imageView" destination="8iB-EV-Pws" id="DJr-qM-Lzx"/>
-                                            <outlet property="takeSurveyBtn" destination="qmi-Ll-LVq" id="ZY0-vT-Ofw"/>
-                                            <outlet property="titleLbl" destination="9e6-AR-xNK" id="y7B-vT-ZIf"/>
+                                            <outlet property="takeSurveyButton" destination="qmi-Ll-LVq" id="ZY0-vT-Ofw"/>
+                                            <outlet property="titleLabel" destination="9e6-AR-xNK" id="y7B-vT-ZIf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -187,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="1008.8" y="106.59670164917542"/>
         </scene>
-        <!--DetailVC-->
+        <!--Detail View Controller-->
         <scene sceneID="SL6-uS-zkR">
             <objects>
-                <viewController id="e8o-mL-zoF" customClass="DetailVC" customModule="SURVEYS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="e8o-mL-zoF" customClass="DetailViewController" customModule="SURVEYS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iYV-Mo-Nxa"/>
                         <viewControllerLayoutGuide type="bottom" id="inK-sd-h2u"/>
@@ -238,7 +244,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Khn-HY-db0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NoM-W4-lxQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">

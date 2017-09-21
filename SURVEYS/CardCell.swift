@@ -9,11 +9,11 @@
 import UIKit
 
 class CardCell: UICollectionViewCell {
-    @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageCoverView: UIView!
-    @IBOutlet weak var takeSurveyBtn: RoundedButton!
+    @IBOutlet weak var takeSurveyButton: RoundedButton!
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
@@ -29,8 +29,8 @@ class CardCell: UICollectionViewCell {
         
         let scale = max(delta, 0.5)
         
-        titleLbl.transform = CGAffineTransform(scaleX: scale, y: scale)
-        descriptionLbl.alpha = delta
-        takeSurveyBtn.transform = CGAffineTransform(scaleX: scale, y: scale)
+        titleLabel.transform = CGAffineTransform(scaleX: scale, y: scale)
+        descriptionLabel.alpha = delta
+        takeSurveyButton.transform = CGAffineTransform(scaleX: scale, y: scale)
     }
 }
