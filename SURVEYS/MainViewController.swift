@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 import NVActivityIndicatorView
 import Nuke
 
-class MainVC: UIViewController {
+class MainViewController: UIViewController {
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var pagerCollectionView: UICollectionView!
     
@@ -50,7 +50,7 @@ class MainVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let sender = sender as? UIButton, let detailVC = segue.destination as? DetailVC {
+        if let sender = sender as? UIButton, let detailVC = segue.destination as? DetailViewController {
             detailVC.survey = surveys[sender.tag]
         }
     }
@@ -105,7 +105,7 @@ class MainVC: UIViewController {
     }
 }
 
-extension MainVC: UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -116,14 +116,14 @@ extension MainVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === cardCollectionView, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeueCardCell, for: indexPath) as? CardCell {
-            cell.titleLbl.text = surveys[indexPath.row].title
-            cell.descriptionLbl.text = surveys[indexPath.row].description
-            cell.takeSurveyBtn.tag = indexPath.row
+            cell.titleLabel.text = surveys[indexPath.row].title
+            cell.descriptionLabel.text = surveys[indexPath.row].description
+            cell.takeSurveyButton.tag = indexPath.row
             
             cell.imageView.image = nil
             Nuke.loadImage(with: surveys[indexPath.row].coverImageURL, into: cell.imageView)
             
-            cell.takeSurveyBtn.addTarget(self, action: #selector(didTapTakeSurveyBtn(sender:)), for: .touchUpInside)
+            cell.takeSurveyButton.addTarget(self, action: #selector(didTapTakeSurveyBtn(sender:)), for: .touchUpInside)
             
             return cell
         } else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DequeuePagerCell, for: indexPath) as? PagerCell {
@@ -140,7 +140,7 @@ extension MainVC: UICollectionViewDataSource {
     }
 }
 
-extension MainVC: UICollectionViewDelegate {
+extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // MARK: I use collectionView and dequeue cell with fixed width and height for pager. The collectionView is 30*450 and cell is 30*30, which means the collectionView can have 15 cells within it at most. When the user's scrolling the cardCollectionView and the indicator cell hits the upper or lower boundary, content offset needs to be changed. After reseting the offset, the sums needs to be reset to max value(maxCellsQty) as well because the cell is still on the boundary. In addition, the dots also provide navigation functionality. Press the dot the content view will navigate to the index accordingly.
         if collectionView === pagerCollectionView {
@@ -181,13 +181,13 @@ extension MainVC: UICollectionViewDelegate {
     }
 }
 
-extension MainVC: CollectionViewCellDelegate {
+extension MainViewController: CollectionViewCellDelegate {
     func didCellIndexChange(index: CGFloat) {
         collectionView(pagerCollectionView, didSelectItemAt: IndexPath(row: Int(index), section: 0))
     }
 }
 
-extension MainVC: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+extension MainViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "No Data"
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
