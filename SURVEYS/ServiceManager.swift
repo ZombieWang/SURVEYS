@@ -11,7 +11,7 @@ import SwiftyJSON
 import KeychainAccess
 
 // MARK: Singleton classes don't care about reference cycle because they won't be released.
-final class ServiceManager: ApiManager {
+final class ServiceManager {
     static let shared = ServiceManager()
     
     private var _token: String?
