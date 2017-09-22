@@ -12,29 +12,28 @@ class SurveyDataModel {
 	typealias CompletionHandler = (_ surveys: [Survey]?, _ error: ServiceManagerError?) -> Void
 	
 	init() {
-//		ServiceManager.shared.getToken { (response) in
-//			switch response {
-//			case .result(let token):
-//				print("Successfully get token: \(token) and initiate")
-//			case .failed:
-//				print("Get token failed")
-//			}
-//		}
+		ServiceManager.shared.getToken_ { (token, error) in
+			guard error == nil, let token = token else {
+				print("Get token failed")
+				return
+			}
+			
+			print("Successfully get new token: \(token)")
+		}
 	}
 	
 	func requestData(arg: [String: String]? = nil, completion: @escaping CompletionHandler) {
-		ServiceManager.shared.query(arg: arg) { (response) in
-			switch response {
-			case .failed:
-				completion(nil, .fetchDataError)
-			case .result(let json):
+		ServiceManager.shared.query { (json, error) in
+			if let error = error {
+				completion(nil, error)
+			} else if let json = json {
 				var surveys = [Survey]()
 				
 				_ = json.map({ (_, json) in
 					if let id = json["id"].string, let title = json["title"].string, let description = json["description"].string, let coverImageUrl = json["cover_image_url"].string {
 						let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
 						
-							surveys.append(survey)
+						surveys.append(survey)
 					}
 				})
 				
