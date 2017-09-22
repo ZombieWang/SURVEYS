@@ -14,7 +14,6 @@ import KeychainAccess
 final class ServiceManager {
 	static let shared = ServiceManager()
 	
-	//	private var _token: String?
 	private let _urls: [String: String] = ["query": "https://nimbl3-survey-api.herokuapp.com/surveys.json?access_token=", "getToken": "https://nimbl3-survey-api.herokuapp.com/oauth/token?"]
 	private let _tokenParams = ["grant_type": "password", "username": "carlos@nimbl3.com", "password": "antikera"]
 	
