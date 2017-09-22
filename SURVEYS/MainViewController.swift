@@ -65,6 +65,9 @@ class MainViewController: UIViewController {
 		NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
 		
 		surveyDataModel.requestData { (surveys, error) in
+			self.cardCollectionView.emptyDataSetSource = self
+			self.cardCollectionView.emptyDataSetDelegate = self
+			
 			guard error == nil, let surveys = surveys else {
 				NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
 				
