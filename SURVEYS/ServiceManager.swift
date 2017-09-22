@@ -13,12 +13,18 @@ import KeychainAccess
 // MARK: Singleton classes don't care about reference cycle because they won't be released.
 final class ServiceManager {
 	static let shared = ServiceManager()
-	
-	private let _urls: [String: String] = ["query": "https://nimbl3-survey-api.herokuapp.com/surveys.json?access_token=", "getToken": "https://nimbl3-survey-api.herokuapp.com/oauth/token?"]
-	private let _tokenParams = ["grant_type": "password", "username": "carlos@nimbl3.com", "password": "antikera"]
+	private let _urls: [String: String] = ["query": "https://nimbl3-survey-api.herokuapp.com/surveys.json", "getToken": "https://nimbl3-survey-api.herokuapp.com/oauth/token"]
+	private let _tokenParams: [String: String] = ["grant_type": "password", "username": "carlos@nimbl3.com", "password": "antikera"]
+	private var requestUrlCache: URL?
 	
 	typealias TokenCompletionHandler = (_ tokenString: String?, _ error: ServiceManagerError?) -> Void
 	typealias QueryCompletionHandler = (_ json: JSON?, _ error: ServiceManagerError?) -> Void
+	
+	var urls: [String: String] {
+		get {
+			return _urls
+		}
+	}
 	
 	private init() {}
 	
@@ -79,10 +85,23 @@ final class ServiceManager {
 				return
 		}
 		
-		Alamofire.request(requestUrl, method: .get, parameters: args).responseData { (response) in
+		var argument = ["access_token": token]
+		if let args = args {
+			argument += args
+		}
+		
+		let url = requestUrlCache != nil ? requestUrlCache! : requestUrl
+		
+		Alamofire.request(url, method: .get, parameters: argument).responseData { (response) in
 			guard response.error == nil else {
 				completion(nil, .connectionError)
 				return
+			}
+			
+			if let statusCode = response.response?.statusCode, statusCode == 401 {
+				self.requestUrlCache = requestUrl
+				
+				completion(nil, .unauthorized)
 			}
 			
 			guard let data = response.result.value else {
@@ -92,5 +111,22 @@ final class ServiceManager {
 			
 			completion(JSON(data: data), nil)
 		}
+	}
+	
+	func restartCachedRequest(completion: @escaping QueryCompletionHandler) {
+		guard requestUrlCache != nil else {
+			completion(nil, .noCachedRequest)
+			return
+		}
+		
+		query(completion: { (json, error) in
+			self.requestUrlCache = nil
+			
+			if let error = error {
+				completion(nil, error)
+			}
+			
+			completion(json, nil)
+		})
 	}
 }

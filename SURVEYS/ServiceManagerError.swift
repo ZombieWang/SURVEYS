@@ -13,4 +13,6 @@ enum ServiceManagerError: Error {
 	case fetchDataError
 	case getTokenError(String)
 	case queryError(String)
+	case unauthorized
+	case noCachedRequest
 }

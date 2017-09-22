@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import KeychainAccess
+import SwiftyJSON
 
 class SurveyDataModel {
 	typealias CompletionHandler = (_ surveys: [Survey]?, _ error: ServiceManagerError?) -> Void
@@ -25,20 +27,41 @@ class SurveyDataModel {
 	func requestData(arg: [String: String]? = nil, completion: @escaping CompletionHandler) {
 		ServiceManager.shared.query { (json, error) in
 			if let error = error {
-				completion(nil, error)
-			} else if let json = json {
-				var surveys = [Survey]()
-				
-				_ = json.map({ (_, json) in
-					if let id = json["id"].string, let title = json["title"].string, let description = json["description"].string, let coverImageUrl = json["cover_image_url"].string {
-						let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
+				switch error {
+				case .unauthorized:
+					ServiceManager.shared.getToken(completion: { (_, error) in
+						if let error = error {
+							completion(nil, error)
+						}
 						
-						surveys.append(survey)
-					}
-				})
-				
-				completion(surveys, nil)
+						ServiceManager.shared.query { (json, error) in
+							if let error = error {
+								completion(nil, error)
+							} else if let json = json {
+								completion(self.appendSurveys(json), nil)
+							}
+						}
+					})
+				default:
+					completion(nil, error)
+				}
+			} else if let json = json {
+				completion(self.appendSurveys(json), nil)
 			}
 		}
+	}
+	
+	private func appendSurveys(_ json: JSON) -> [Survey] {
+		var surveys = [Survey]()
+		
+		_ = json.map({ (_, json) in
+			if let id = json["id"].string, let title = json["title"].string, let description = json["description"].string, let coverImageUrl = json["cover_image_url"].string {
+				let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
+				
+				surveys.append(survey)
+			}
+		})
+		
+		return surveys
 	}
 }

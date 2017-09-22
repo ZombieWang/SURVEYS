@@ -12,6 +12,7 @@
 		0140CA681F6FD513007540A7 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA671F6FD513007540A7 /* ServiceManager.swift */; };
 		0140CA6A1F6FD701007540A7 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */; };
 		01A936391F7127E200D226C7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936381F7127E200D226C7 /* DetailViewController.swift */; };
+		01C276BD1F757DD50020C6A7 /* Dictionary+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C276BC1F757DD50020C6A7 /* Dictionary+Extention.swift */; };
 		01D474911F74D18C0091A139 /* SurveyDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D474901F74D18C0091A139 /* SurveyDataModel.swift */; };
 		01D474931F74DB6D0091A139 /* ServiceManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D474921F74DB6D0091A139 /* ServiceManagerError.swift */; };
 		01D67F851F6F585700A1A055 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67F841F6F585700A1A055 /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 		0140CA671F6FD513007540A7 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		0140CA691F6FD701007540A7 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
 		01A936381F7127E200D226C7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		01C276BC1F757DD50020C6A7 /* Dictionary+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extention.swift"; sourceTree = "<group>"; };
 		01D474901F74D18C0091A139 /* SurveyDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDataModel.swift; sourceTree = "<group>"; };
 		01D474921F74DB6D0091A139 /* ServiceManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerError.swift; sourceTree = "<group>"; };
 		01D67F811F6F585700A1A055 /* SURVEYS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SURVEYS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,14 @@
 			name = Enum;
 			sourceTree = "<group>";
 		};
+		01C276BE1F757DE90020C6A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				01C276BC1F757DD50020C6A7 /* Dictionary+Extention.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		01D67F781F6F585700A1A055 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 				01D67FB71F6F70E500A1A055 /* Resources */,
 				01D67FBB1F6F7BF100A1A055 /* Protocol */,
 				0140CA6F1F6FDF51007540A7 /* Enum */,
+				01C276BE1F757DE90020C6A7 /* Extensions */,
 			);
 			path = SURVEYS;
 			sourceTree = "<group>";
@@ -615,6 +626,7 @@
 				01A936391F7127E200D226C7 /* DetailViewController.swift in Sources */,
 				01D67FC11F6F7D3E00A1A055 /* PagerCell.swift in Sources */,
 				01D67FB41F6F6F0600A1A055 /* MainViewController.swift in Sources */,
+				01C276BD1F757DD50020C6A7 /* Dictionary+Extention.swift in Sources */,
 				01D67FBD1F6F7C3000A1A055 /* SegueHandlerType.swift in Sources */,
 				014046EB1F70F0C5004ADA30 /* Survey.swift in Sources */,
 				01D67FBF1F6F7D3200A1A055 /* CardCell.swift in Sources */,

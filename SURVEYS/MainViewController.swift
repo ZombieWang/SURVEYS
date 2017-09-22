@@ -15,16 +15,17 @@ class MainViewController: UIViewController, SegueHandlerType {
 	@IBOutlet weak var cardCollectionView: UICollectionView!
 	@IBOutlet weak var pagerCollectionView: UICollectionView!
 	
+	private let surveyDataModel = SurveyDataModel()
 	var surveys = [Survey]()
+	fileprivate var currentItemIndex: Int = 0
+	fileprivate var downwardCellSum = 0
+	fileprivate var upwardCellSum = 0
+	
 	fileprivate var currentIndicatorIndex = 0 {
 		didSet {
 			collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
 		}
 	}
-	fileprivate var currentItemIndex: Int = 0
-	fileprivate var downwardCellSum = 0
-	fileprivate var upwardCellSum = 0
-	private let surveyDataModel = SurveyDataModel()
 	
 	enum SegueIdentifier: String {
 		case ToDetailViewController
