@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
     var currentItemIndex: Int = 0
     var downwardCellSum = 0
     var upwardCellSum = 0
+	let surveyDataModel = SurveyDataModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,39 +62,29 @@ class MainViewController: UIViewController {
     
     func reloadData() {
         NVActivityIndicatorView.DEFAULT_TYPE = .pacman
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
-            
-        ServiceManager.shared.query(arg: nil) { (response) in
-            self.cardCollectionView.emptyDataSetSource = self
-            self.cardCollectionView.emptyDataSetDelegate = self
-            
-            switch response {
-            case .result(let json):
-                _ = json.map({ (_, json) in
-                    if let id = json["id"].string, let title = json["title"].string, let description = json["description"].string, let coverImageUrl = json["cover_image_url"].string {
-                        let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
-                        
-                        if self.surveys.filter({ $0.id == id }).count == 0 {
-                            self.surveys.append(survey)
-                        }
-                    }
-                })
-                
-                DispatchQueue.main.async {
-                    self.cardCollectionView.reloadData()
-                    self.pagerCollectionView.reloadData()
-                    
-                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-                }
-            case .failed:
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-                
-                let alertController = UIAlertController(title: "Error", message: "Fetch data failed", preferredStyle: .alert)
-                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                alertController.addAction(cancel)
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }
+		NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
+		
+		surveyDataModel.requestData { (surveys, error) in
+			guard error == nil, let surveys = surveys else {
+				NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+				
+				let alertController = UIAlertController(title: "Error", message: "Fetch data failed", preferredStyle: .alert)
+				let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+				alertController.addAction(cancel)
+				self.present(alertController, animated: true, completion: nil)
+				
+				return
+			}
+			
+			self.surveys = surveys
+			
+			DispatchQueue.main.async {
+				self.cardCollectionView.reloadData()
+				self.pagerCollectionView.reloadData()
+				
+				NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+			}
+		}
     }
     
     func didTapTakeSurveyButton(sender: UIButton) {
