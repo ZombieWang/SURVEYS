@@ -21,7 +21,7 @@
 		01D67F8F1F6F585700A1A055 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D67F8D1F6F585700A1A055 /* LaunchScreen.storyboard */; };
 		01D67FA51F6F585700A1A055 /* SURVEYSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FA41F6F585700A1A055 /* SURVEYSUITests.swift */; };
 		01D67FB41F6F6F0600A1A055 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FB31F6F6F0600A1A055 /* MainViewController.swift */; };
-		01D67FBD1F6F7C3000A1A055 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FBC1F6F7C3000A1A055 /* Constants.swift */; };
+		01D67FBD1F6F7C3000A1A055 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FBC1F6F7C3000A1A055 /* SegueHandlerType.swift */; };
 		01D67FBF1F6F7D3200A1A055 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FBE1F6F7D3200A1A055 /* CardCell.swift */; };
 		01D67FC11F6F7D3E00A1A055 /* PagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FC01F6F7D3E00A1A055 /* PagerCell.swift */; };
 		01D67FC51F6F8CAB00A1A055 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D67FC41F6F8CAB00A1A055 /* RoundedButton.swift */; };
@@ -69,7 +69,7 @@
 		01D67FA41F6F585700A1A055 /* SURVEYSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURVEYSUITests.swift; sourceTree = "<group>"; };
 		01D67FA61F6F585700A1A055 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D67FB31F6F6F0600A1A055 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		01D67FBC1F6F7C3000A1A055 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		01D67FBC1F6F7C3000A1A055 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		01D67FBE1F6F7D3200A1A055 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		01D67FC01F6F7D3E00A1A055 /* PagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerCell.swift; sourceTree = "<group>"; };
 		01D67FC41F6F8CAB00A1A055 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 				01D67FB61F6F70D600A1A055 /* Storyboard */,
 				01D67FBA1F6F712500A1A055 /* Utils */,
 				01D67FB71F6F70E500A1A055 /* Resources */,
-				01D67FBB1F6F7BF100A1A055 /* Constants */,
+				01D67FBB1F6F7BF100A1A055 /* Protocol */,
 				0140CA631F6F9D7F007540A7 /* Variables */,
 				0140CA6F1F6FDF51007540A7 /* Enum */,
 			);
@@ -259,12 +259,12 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		01D67FBB1F6F7BF100A1A055 /* Constants */ = {
+		01D67FBB1F6F7BF100A1A055 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				01D67FBC1F6F7C3000A1A055 /* Constants.swift */,
+				01D67FBC1F6F7C3000A1A055 /* SegueHandlerType.swift */,
 			);
-			name = Constants;
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		01D67FC61F6F9B7F00A1A055 /* Layout */ = {
@@ -628,7 +628,7 @@
 				01D67FC11F6F7D3E00A1A055 /* PagerCell.swift in Sources */,
 				01A0FA4E1F704E0000B3187C /* DeviceVariable.swift in Sources */,
 				01D67FB41F6F6F0600A1A055 /* MainViewController.swift in Sources */,
-				01D67FBD1F6F7C3000A1A055 /* Constants.swift in Sources */,
+				01D67FBD1F6F7C3000A1A055 /* SegueHandlerType.swift in Sources */,
 				014046EB1F70F0C5004ADA30 /* Survey.swift in Sources */,
 				01D67FBF1F6F7D3200A1A055 /* CardCell.swift in Sources */,
 				01D474931F74DB6D0091A139 /* ServiceManagerError.swift in Sources */,
