@@ -23,35 +23,24 @@ class ServiceManagerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testProps() {
-        XCTAssertNotNil(sut.token)
-        XCTAssertNotNil(sut.urls)
-        XCTAssertNotNil(sut.tokenParams)
-    }
-    
-    func testGetToken() {
-        let exp = expectation(description: #function)
-        
-        sut.getToken { (response) in
-            switch response {
-            case .result(let token):
-                XCTAssertNotNil(token)
-                exp.fulfill()
-            case .failed:
-                XCTFail("fetch new token failed")
-            }
-        }
-        
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
-    // MARK: Same functionality as getToken(completion:), so just check the existance and lock it in the test file.
-    func testRefreshToken() {
-        XCTAssertNotNil(sut.refreshToken)
-    }
-    
-    func testQuery() {
+	
+//    func testGetToken() {
+//        let exp = expectation(description: #function)
+//
+//        sut.getToken { (response) in
+//            switch response {
+//            case .result(let token):
+//                XCTAssertNotNil(token)
+//                exp.fulfill()
+//            case .failed:
+//                XCTFail("fetch new token failed")
+//            }
+//        }
+//
+//        waitForExpectations(timeout: 5, handler: nil)
+//    }
+	
+	func testQuery() {
         let exp = expectation(description: #function)
         
         sut.query(arg: nil) { (response) in

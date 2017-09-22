@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
     var currentItemIndex: Int = 0
     var downwardCellSum = 0
     var upwardCellSum = 0
+	let surveyDataModel = SurveyDataModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,13 @@ class MainViewController: UIViewController {
     
     func reloadData() {
         NVActivityIndicatorView.DEFAULT_TYPE = .pacman
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
+	
+		NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
+		
+		surveyDataModel.requestData(arg: nil) { (surveys, error) in
+	
+		}
+		
             
         ServiceManager.shared.query(arg: nil) { (response) in
             self.cardCollectionView.emptyDataSetSource = self
