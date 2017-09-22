@@ -186,7 +186,7 @@
                     <connections>
                         <outlet property="cardCollectionView" destination="Pnw-d7-Pit" id="u6o-Pk-n3I"/>
                         <outlet property="pagerCollectionView" destination="ril-da-sih" id="Tpz-QV-IE9"/>
-                        <segue destination="e8o-mL-zoF" kind="show" identifier="ToDetailVC" id="VHT-7X-fkg"/>
+                        <segue destination="e8o-mL-zoF" kind="show" identifier="ToDetailViewController" id="VHT-7X-fkg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuG-gO-3YR" userLabel="First Responder" sceneMemberID="firstResponder"/>
