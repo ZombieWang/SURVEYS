@@ -38,7 +38,8 @@ class SurveyDataModel {
 							if let error = error {
 								completion(nil, error)
 							} else if let json = json {
-								completion(self.appendSurveys(json), nil)							}
+								completion(self.appendSurveys(json), nil)
+							}
 						}
 					})
 				default:
