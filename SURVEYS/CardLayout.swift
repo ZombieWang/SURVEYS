@@ -26,7 +26,7 @@ class CardLayout: UICollectionViewLayout {
     // The amount the user needs to scroll before the featured cell changes
     let dragOffset: CGFloat = 180.0
     
-    var cache = [UICollectionViewLayoutAttributes]()
+    private var cache = [UICollectionViewLayoutAttributes]()
     
     // Returns the item index of the currently featured cell
     var featuredItemIndex: Int {

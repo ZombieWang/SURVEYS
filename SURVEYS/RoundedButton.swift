@@ -36,15 +36,15 @@ class RoundedButton: UIButton {
         }
     }
     
-    let shadowGray: CGFloat = 120.0 / 255.0
-    let _alpha: CGFloat = 0.6
-    let _weight: CGFloat = 1.0
-    let _height: CGFloat = 1.0
+    private let _shadowGray: CGFloat = 120.0 / 255.0
+    private let _alpha: CGFloat = 0.6
+    private let _weight: CGFloat = 1.0
+    private let _height: CGFloat = 1.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        layer.shadowColor = UIColor(red: shadowGray, green: shadowGray, blue: shadowGray, alpha: _alpha).cgColor
+        layer.shadowColor = UIColor(red: _shadowGray, green: _shadowGray, blue: _shadowGray, alpha: _alpha).cgColor
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 5.0
         layer.shadowOffset = CGSize(width: _weight, height: _height)

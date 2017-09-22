@@ -16,15 +16,15 @@ class MainViewController: UIViewController, SegueHandlerType {
 	@IBOutlet weak var pagerCollectionView: UICollectionView!
 	
 	var surveys = [Survey]()
-	var currentIndicatorIndex = 0 {
+	fileprivate var currentIndicatorIndex = 0 {
 		didSet {
 			collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
 		}
 	}
-	var currentItemIndex: Int = 0
-	var downwardCellSum = 0
-	var upwardCellSum = 0
-	let surveyDataModel = SurveyDataModel()
+	fileprivate var currentItemIndex: Int = 0
+	fileprivate var downwardCellSum = 0
+	fileprivate var upwardCellSum = 0
+	private let surveyDataModel = SurveyDataModel()
 	
 	enum SegueIdentifier: String {
 		case ToDetailViewController
@@ -63,11 +63,11 @@ class MainViewController: UIViewController, SegueHandlerType {
 		}
 	}
 	
-	func didSelectIndicator() {
+	@objc fileprivate func didSelectIndicator() {
 		collectionView(cardCollectionView, didSelectItemAt: IndexPath(row: currentIndicatorIndex, section: 0))
 	}
 	
-	func reloadData() {
+	private func reloadData() {
 		NVActivityIndicatorView.DEFAULT_TYPE = .pacman
 		NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(color: UIColor.cyan))
 		
@@ -97,7 +97,7 @@ class MainViewController: UIViewController, SegueHandlerType {
 		}
 	}
 	
-	func didTapTakeSurveyButton(sender: UIButton) {
+	@objc fileprivate func didTapTakeSurveyButton(sender: UIButton) {
 		performSegueWithIdentifier(segueIdentifier: .ToDetailViewController, sender: sender)
 	}
 	
