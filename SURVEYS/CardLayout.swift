@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct DeviceVariable {
+	static let standardHeight: CGFloat = 100
+	static let windowHeight: CGFloat = UIScreen.main.bounds.height
+}
+
 protocol CollectionViewCellDelegate: class {
     func didCellIndexChange(index: CGFloat)
 }
@@ -66,7 +71,7 @@ class CardLayout: UICollectionViewLayout {
         let contentHeight = (CGFloat(numberOfItems) * dragOffset) + (height - dragOffset)
         return CGSize(width: width, height: contentHeight)
     }
-    
+	
     override func prepare() {
         cache.removeAll(keepingCapacity: false)
         
