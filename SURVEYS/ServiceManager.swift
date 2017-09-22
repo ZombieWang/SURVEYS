@@ -23,7 +23,13 @@ final class ServiceManager {
 	private init() {}
 	
 	func getToken(completion: @escaping TokenCompletionHandler) {
-		Alamofire.request(URL(string: _urls["getToken"]!)!,
+		guard let getTokenUrlString = _urls["getToken"],
+			let tokenUrl = URL(string: getTokenUrlString) else {
+				completion(nil, .getTokenError("Unwrap optionals failed"))
+				return
+		}
+		
+		Alamofire.request(tokenUrl,
 		                  method: .post,
 		                  parameters: _tokenParams)
 			.responseData { response in
@@ -62,15 +68,15 @@ final class ServiceManager {
 	func query(args: [String: String]? = nil, completion: @escaping QueryCompletionHandler) {
 		guard let queryUrlString = _urls["query"],
 			let queryUrl = URL(string: queryUrlString) else {
-			completion(nil, .queryError("Unwrap optionals failed"))
-			return
+				completion(nil, .queryError("Unwrap optionals failed"))
+				return
 		}
 		
 		guard let tokenData = try? Keychain(server: queryUrl, protocolType: .https).get("token"),
 			let token = tokenData,
 			let requestUrl = URL(string: "\(queryUrlString)\(token)") else {
-			completion(nil, .getTokenError("Get token from keychain failed"))
-			return
+				completion(nil, .getTokenError("Get token from keychain failed"))
+				return
 		}
 		
 		Alamofire.request(requestUrl, method: .get, parameters: args).responseData { (response) in
