@@ -29,7 +29,7 @@ class CardLayout: UICollectionViewLayout {
     private var cache = [UICollectionViewLayoutAttributes]()
     
     // Returns the item index of the currently featured cell
-    var featuredItemIndex: Int {
+    private var featuredItemIndex: Int {
         get {
             // Use max to make sure the featureItemIndex is never < 0
             return max(0, Int(collectionView!.contentOffset.y / dragOffset))
@@ -37,28 +37,28 @@ class CardLayout: UICollectionViewLayout {
     }
     
     // Returns a value between 0 and 1 that represents how close the next cell is to becoming the featured cell
-    var nextItemPercentageOffset: CGFloat {
+    private var nextItemPercentageOffset: CGFloat {
         get {
             return (collectionView!.contentOffset.y / dragOffset) - CGFloat(featuredItemIndex)
         }
     }
     
     // Returns the width of the collection view
-    var width: CGFloat {
+    private var width: CGFloat {
         get {
             return collectionView!.bounds.width
         }
     }
     
     // Returns the height of the collection view
-    var height: CGFloat {
+    private var height: CGFloat {
         get {
             return collectionView!.bounds.height
         }
     }
     
     // Returns the number of items in the collection view
-    var numberOfItems: Int {
+    private var numberOfItems: Int {
         get {
             return collectionView!.numberOfItems(inSection: 0)
         }
