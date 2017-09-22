@@ -18,11 +18,9 @@ protocol CollectionViewCellDelegate: class {
 }
 
 class CardLayout: UICollectionViewLayout {
-    
     weak var collectionViewCellDelegate: CollectionViewCellDelegate?
     
     // MARK: Variables
-    
     // The amount the user needs to scroll before the featured cell changes
     let dragOffset: CGFloat = 180.0
     
@@ -65,7 +63,6 @@ class CardLayout: UICollectionViewLayout {
     }
     
     // MARK: UICollectionViewLayout
-    
     // Return the size of all the content in the collection view
     override var collectionViewContentSize: CGSize {
         let contentHeight = (CGFloat(numberOfItems) * dragOffset) + (height - dragOffset)

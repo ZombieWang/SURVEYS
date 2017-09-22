@@ -8,6 +8,7 @@
 
 import XCTest
 import SwiftyJSON
+import KeychainAccess
 @testable import SURVEYS
 
 class ServiceManagerTests: XCTestCase {
@@ -35,7 +36,7 @@ class ServiceManagerTests: XCTestCase {
 			}
 		}
 		
-		waitForExpectations(timeout: 5, handler: nil)
+		waitForExpectations(timeout: 10, handler: nil)
 	}
 	
 	func testQuery() {
@@ -51,8 +52,6 @@ class ServiceManagerTests: XCTestCase {
 				let coverImageUrl = json[0]["cover_image_url"].string {
 				let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
 				XCTAssertNotNil(survey)
-				
-				exp.fulfill()
 			}
 		}
 		
@@ -71,6 +70,52 @@ class ServiceManagerTests: XCTestCase {
 			}
 		}
 		
-		waitForExpectations(timeout: 10, handler: nil)
+		waitForExpectations(timeout: 15, handler: nil)
+	}
+	
+	func testRestartCachedRequest() {
+		let exp = expectation(description: #function)
+		
+		guard let urlString = sut.urls["query"], let url = URL(string: urlString) else {
+			XCTFail("Unwrap failed")
+			return
+		}
+		
+		try? Keychain(server: url, protocolType: .https).set("fakeToken", key: "token")
+		let tokenData = try? Keychain(server: url, protocolType: .https).get("token")
+		print("Set fake token to ketchain, current token: \(tokenData!!)")
+		
+		sut.query { (json, error) in
+			if let error = error {
+				switch error {
+				case .unauthorized:
+					self.sut.getToken(completion: { (token, error) in
+						if error != nil {
+							XCTFail("Get token failed")
+						} else {
+							print("Current token is: \(token!)")
+							self.sut.restartCachedRequest(completion: { (json, error) in
+								if error != nil {
+									XCTFail("Restart cached request failed")
+								} else if let json = json,
+									let id = json[0]["id"].string,
+									let title = json[0]["title"].string,
+									let description = json[0]["description"].string,
+									let coverImageUrl = json[0]["cover_image_url"].string {
+									let survey = Survey(id: id, title: title, description: description, coverImageUrl: "\(coverImageUrl)l")
+									XCTAssertNotNil(survey)
+									
+									exp.fulfill()
+								}
+							})
+						}
+					})
+				default:
+					XCTFail("Query failed")
+				}
+			}
+		}
+		
+		waitForExpectations(timeout: 20, handler: nil)
 	}
 }
