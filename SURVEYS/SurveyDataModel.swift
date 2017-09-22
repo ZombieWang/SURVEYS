@@ -12,7 +12,7 @@ class SurveyDataModel {
 	typealias CompletionHandler = (_ surveys: [Survey]?, _ error: ServiceManagerError?) -> Void
 	
 	init() {
-		ServiceManager.shared.getToken_ { (token, error) in
+		ServiceManager.shared.getToken { (token, error) in
 			guard error == nil, let token = token else {
 				print("Get token failed")
 				return

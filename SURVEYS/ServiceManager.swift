@@ -22,7 +22,7 @@ final class ServiceManager {
 	
 	private init() {}
 	
-	func getToken_(completion: @escaping TokenCompletionHandler) {
+	func getToken(completion: @escaping TokenCompletionHandler) {
 		Alamofire.request(URL(string: _urls["getToken"]!)!,
 		                  method: .post,
 		                  parameters: _tokenParams)
