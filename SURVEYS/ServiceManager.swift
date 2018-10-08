@@ -13,11 +13,8 @@ import KeychainAccess
 // MARK: Singleton classes don't care about reference cycle because they won't be released.
 final class ServiceManager {
 	static let shared = ServiceManager()
-	private let _urls: [String: String] = ["query": "https://nimbl3-survey-api.herokuapp.com/surveys.json",
-	                                       "getToken": "https://nimbl3-survey-api.herokuapp.com/oauth/token"]
-	private let _tokenParams: [String: String] = ["grant_type": "password",
-	                                              "username": "carlos@nimbl3.com",
-	                                              "password": "antikera"]
+	private let _urls: [String: String] = ["query": "https://nimbl3-survey-api.herokuapp.com/surveys.json", "getToken": "https://nimbl3-survey-api.herokuapp.com/oauth/token"]
+	private let _tokenParams: [String: String] = ["grant_type": "password", "username": "carlos@nimbl3.com", "password": "antikera"]
 	private var requestUrlCache: URL?
 	
 	typealias TokenCompletionHandler = (_ tokenString: String?, _ error: ServiceManagerError?) -> Void
@@ -101,11 +98,10 @@ final class ServiceManager {
 				return
 			}
 			
-			guard let statusCode = response.response?.statusCode, statusCode != 401 else {
+			if let statusCode = response.response?.statusCode, statusCode == 401 {
 				self.requestUrlCache = requestUrl
 				
 				completion(nil, .unauthorized)
-				return
 			}
 			
 			guard let data = response.result.value else {
